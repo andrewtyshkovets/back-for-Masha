@@ -85,7 +85,6 @@
                 <configuration>
                         <source>1.11</source>
                         <target>1.8</target>
-                    <release>8</release>
                         <verbose>true</verbose>
                     <annotationProcessorPaths>
                         <path>
