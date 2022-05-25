@@ -1,7 +1,7 @@
 spring:
   datasource:
     password: ${DB_PASSWORD}
-    url: jdbc:postgresql://${DB_URL}
+    url: jdbc:postgresql://${DATABASE_URL}
     username: ${DB_USERNAME}
     hikari:
       schema: ${DB_SCHEMA}
