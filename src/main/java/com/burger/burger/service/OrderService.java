@@ -38,4 +38,14 @@ public class OrderService {
     public List<OrderDto> getOrders() {
         return orderRepository.findAll().stream().map(orderMapper::orderToOrderDto).collect(Collectors.toList());
     }
+
+    public OrderDto updateOrder(OrderDto orderDto, UUID id) {
+        Order order = orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found"));
+        order = orderMapper.updateOrderFromDto(orderDto, order);
+        return orderMapper.orderToOrderDto(orderRepository.save(order));
+    }
+
+    public void deleteOrder(UUID id) {
+        orderRepository.deleteById(id);
+    }
 }

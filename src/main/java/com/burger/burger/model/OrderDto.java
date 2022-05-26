@@ -3,7 +3,7 @@ package com.burger.burger.model;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.validation.constraints.Min;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -32,7 +32,7 @@ public class OrderDto {
     private String orderAddress;
 
     @NotNull(message = "Order price can not be null")
-    @Min(value = 1, message = "Price can not be zero")
+    @DecimalMin(value = "1.45", message = "Price can not be zero")
     private BigDecimal orderPrice;
 
     @NotNull(message = "Order products can not be null")
