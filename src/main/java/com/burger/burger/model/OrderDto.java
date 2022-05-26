@@ -32,7 +32,7 @@ public class OrderDto {
     private String orderAddress;
 
     @NotNull(message = "Order price can not be null")
-    @DecimalMin(value = "1.45", message = "Price can not be zero")
+    @DecimalMin(value = "1.24", message = "Price is lower that minimum possible")
     private BigDecimal orderPrice;
 
     @NotNull(message = "Order products can not be null")
