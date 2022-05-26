@@ -13,7 +13,7 @@ import java.util.List;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-
+/*
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -24,5 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
     }
+
+ */
 }
 

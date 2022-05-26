@@ -4,6 +4,7 @@ import com.burger.burger.model.OrderDto;
 import com.burger.burger.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import javax.validation.executable.ValidateOnExecution;
 import java.util.List;
 
 @RestController
+@CrossOrigin(value = "*")
 public class OrderController {
     private final OrderService orderService;
 
