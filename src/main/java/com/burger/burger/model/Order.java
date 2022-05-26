@@ -56,7 +56,7 @@ public class Order {
     private BigDecimal orderPrice;
 
     @OneToMany
-    @Cascade(CascadeType.ALL)
+    @Cascade({CascadeType.DELETE, CascadeType.MERGE})
     @JoinColumn(name = "order_id")
     private List<OrderProducts> orderProducts;
 }

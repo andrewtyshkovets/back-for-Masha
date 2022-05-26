@@ -24,11 +24,11 @@ public interface OrderMapper {
     @Mapping(target = "orderProducts", source = "orderProducts", qualifiedByName = "orderProductsMap")
     OrderDto orderToOrderDto(Order order);
 
-    @Mapping(target = "orderProducts", source = "orderProducts", qualifiedByName = "orderProducts")
+    @Mapping(target = "orderProducts", source = ".", qualifiedByName = "orderProducts")
     Order orderDtoToOrder(OrderDto order);
 
     @Mappings({
-            @Mapping(target = "orderProducts", source = "orderProducts", qualifiedByName = "orderProducts"),
+            @Mapping(target = "orderProducts", source = ".", qualifiedByName = "orderProducts"),
             @Mapping(target = "id", ignore = true)})
     Order updateOrderFromDto(OrderDto orderDto, @MappingTarget Order order);
 
@@ -40,11 +40,12 @@ public interface OrderMapper {
     }
 
     @Named("orderProducts")
-    default List<OrderProducts> orderToProductsMap(Map<String, Integer> orderProducts) {
+    default List<OrderProducts> orderToProductsMap(OrderDto orderDto) {
         List<OrderProducts> orderProductsList = new ArrayList<OrderProducts>();
-        orderProducts.forEach((s, integer) -> orderProductsList.add(
+        orderDto.getOrderProducts().forEach((s, integer) -> orderProductsList.add(
                 OrderProducts.builder()
                         .ingredient(s)
+                        .orderId(orderDto.getId() != null ? orderDto.getId() : null)
                         .quantity(integer)
                         .build()
         ));
